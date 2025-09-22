@@ -33,5 +33,6 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "packageManager": "yarn@4.10.0+sha256.2384c037cb81c4fa25062ce1c14b74a4a0933b3b90c2f99cdaa020dd476a95cc"
 }

@@ -1,7 +1,24 @@
-node_modules
-lib
-.idea
-coverage
+# Node packages
+node_modules/
+**/node_modules/
+
+# Lint cache
+.eslintcache
+
+# Logs
 yarn-error.log
+**/yarn-error.log
+
+# compiled/distributable files
 dist/
-tsconfig.tsbuildinfo
+**/compiled-dist/
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# jest
+coverage/
