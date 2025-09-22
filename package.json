@@ -1,35 +1,46 @@
 {
-  "name": "graphql-joda-types",
-  "version": "3.0.0",
+  "name": "graphql-js-joda",
+  "version": "1.0.0",
   "scripts": {
-    "build": "tsc --build",
-    "precommit": "pretty-quick --staged",
-    "prepublish": "tsc",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*\""
   },
   "description": "js-joda types for GraphQL",
-  "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
-  "repository": "https://github.com/meetup/graphql-joda-types",
-  "author": "Meetup",
+  "repository": "https://github.com/cranberyxl/graphql-joda-types",
   "license": "MIT",
-  "dependencies": {
-    "@js-joda/core": "^3.2.0 || ^4.0.0"
-  },
   "peerDependencies": {
-    "graphql": "^14.0.0 || ^15.0.0"
+    "@js-joda/core": "^5.0.0",
+    "graphql": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
+    "@js-joda/core": "^5.6.5",
     "@types/jest": "^27.0.1",
     "coveralls": "^3.0.1",
-    "graphql": "^15.5.0",
+    "graphql": "16.10.0",
     "husky": "^7.0.1",
     "jest": "^26.6.3",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0",
+    "prettier": "3.6.2",
     "ts-jest": "^26.5.5",
-    "typescript": "^4.2.4"
+    "tsup": "^8.5.0",
+    "typescript": "5.6.3"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "import": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "require": {
+      "types": "./dist/index.d.cts",
+      "require": "./dist/index.cjs"
+    }
   },
   "files": [
     "dist"
