@@ -1,10 +1,12 @@
 import { Kind } from 'graphql';
 import * as joda from '@js-joda/core';
-import { LocalDateTime } from '../index';
+import { LocalDateTime } from '..';
 
 describe('LocalDateTime', () => {
   it('has a description', () => {
-    expect(LocalDateTime.description).toMatchSnapshot();
+    expect(LocalDateTime.description).toBe(
+      'A date and time, such as 2018-07-01T12:00:00, without a timezone, serialized in ISO8601 format'
+    );
   });
 
   it('parses valid datetimes', () => {
@@ -24,15 +26,29 @@ describe('LocalDateTime', () => {
   });
 
   it('rejects invalid datetimes', () => {
+    expect(() => LocalDateTime.parseValue('2018-07-01')).toThrow(
+      "Text '2018-07-01' could not be parsed at index 10: 2018-07-01, at index: 10"
+    );
+  });
+
+  it('rejects non-string types', () => {
+    expect(() => LocalDateTime.parseValue(2018)).toThrow(
+      'LocalDateTime can not represent non-string type 2018'
+    );
     expect(() =>
-      LocalDateTime.parseValue('2018-07-01')
-    ).toThrowErrorMatchingSnapshot();
+      LocalDateTime.parseLiteral({ kind: Kind.INT, value: '20180701' }, null)
+    ).toThrow(
+      'LocalDateTime can not represent non-string type {"kind":"IntValue","value":"20180701"}'
+    );
+    expect(() => LocalDateTime.serialize(2018)).toThrow(
+      'LocalDateTime can not represent invalid type 2018'
+    );
   });
 
   it('rejects undefined and throws', () => {
-    expect(() =>
-      LocalDateTime.parseValue(undefined)
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => LocalDateTime.parseValue(undefined)).toThrow(
+      'LocalDateTime can not represent non-string type undefined'
+    );
   });
 
   it('serializes dates', () => {
@@ -48,8 +64,8 @@ describe('LocalDateTime', () => {
   });
 
   it('refuses to serialize strings that are not valid dates', () => {
-    expect(() =>
-      LocalDateTime.serialize('some garbage')
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => LocalDateTime.serialize('some garbage')).toThrow(
+      'LocalDateTime can not represent invalid type "some garbage"'
+    );
   });
 });
