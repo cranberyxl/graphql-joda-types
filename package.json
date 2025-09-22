@@ -9,9 +9,33 @@
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*\""
   },
-  "description": "js-joda types for GraphQL",
-  "repository": "https://github.com/cranberyxl/graphql-joda-types",
+  "description": "Modern GraphQL scalar types for @js-joda/core with TypeScript support and comprehensive error handling",
+  "keywords": [
+    "graphql",
+    "joda",
+    "js-joda",
+    "date",
+    "time",
+    "datetime",
+    "timezone",
+    "duration",
+    "scalar",
+    "typescript",
+    "fork"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cranberyxl/graphql-joda-types.git"
+  },
+  "homepage": "https://github.com/cranberyxl/graphql-joda-types#readme",
+  "bugs": {
+    "url": "https://github.com/cranberyxl/graphql-joda-types/issues"
+  },
   "license": "MIT",
+  "author": {
+    "name": "cranberyxl",
+    "url": "https://github.com/cranberyxl"
+  },
   "peerDependencies": {
     "@js-joda/core": "^5.0.0",
     "graphql": "^15.0.0 || ^16.0.0"
